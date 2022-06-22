@@ -10,8 +10,8 @@ from app.model import MLPipeline
 
 
 running_locally = os.getenv('RUNNING_LOCAL') is not None
-print("Running locally: ", running_locally)
 if running_locally:
+    print("Running locally: ", running_locally)
     from pathlib import Path
     if Path.cwd().name != 'deploy-python-ml':
         raise Exception("Please run this from within the top directory of `deploy-python-ml`")
@@ -38,7 +38,7 @@ def load_s3_data(filename, bucket=None):
         print("-- Loading s3 data --")
         # load test data
         key = filename
-        print("Requestion object from Bucket: {} and Key: {}".format(bucket, key))
+        print("Requesting object from Bucket: {} and Key: {}".format(bucket, key))
         obj = s3.get_object(Bucket=bucket, Key=key)
         print("Got object from S3")
         data = io.StringIO(obj['Body'].read().decode('utf-8')) 
@@ -53,14 +53,16 @@ def save_s3_results(df, bucket=None, key='predictions.csv'):
         print('Local file: ', local_filename)
         df.to_csv(local_filename, index=False)
     else:
+        s3_client = boto3.client('s3')
         csv_buffer = io.StringIO()
         df.to_csv(csv_buffer, index=False)
-        s3.put_object(Bucket=bucket, Key=key, Body=csv_buffer.getvalue())
+        s3_client.put_object(Bucket=bucket, Key=key, Body=csv_buffer.getvalue())
         print(f'file written to {bucket} --{key}')
     return True
 
 
 def handler(event, context):
+    print("-- Running ML --")
     if running_locally:
         bucket=None
         key = os.getenv('FILENAME', 'model-dev/data/emotion-labels-test.csv')
@@ -77,8 +79,10 @@ def handler(event, context):
     model = load_model()
     preds = model.predict(df['text'])
     df['pred'] = preds
+    print('-- Predictions --')
+    print(df.head())
 
-    save_s3_results(df)
+    save_s3_results(df, bucket=bucket)
 
     return "Success :)"
 
