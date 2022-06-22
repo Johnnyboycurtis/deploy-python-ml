@@ -1,4 +1,4 @@
-# deploy-python-ml
+# DEPLOY-PYTHON-ML
 
 
 Basic machine learning (ML) project to illustrate steps to deploying to AWS Lambda using Docker.
