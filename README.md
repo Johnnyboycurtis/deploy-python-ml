@@ -14,3 +14,15 @@ Some super basic data science/machine learning project. I basically went on Kagg
 ## How do I test the app?
 
 `RUNNING_LOCAL=True python -m app.main`
+or
+`RUNNING_LOCAL=True FILENAME=model-dev/data/emotion-labels-test.csv python -m app.main`
+where `FILENAME` is any file with `text` in the header.
+
+## Directory structure
+
+    deploy-python-ml/
+    ├── app
+    │   ├── model
+    │   ├── preprocessing
+    └── model-dev
+        └── data
