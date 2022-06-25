@@ -26,3 +26,18 @@ where `FILENAME` is any file with `text` in the header.
     │   ├── preprocessing
     └── model-dev
         └── data
+
+
+## Deployment
+
+General steps to deploy your code include
+
+1.  Build your machine learning model and pipeline
+2.  Create/setup a AWS account
+3.  Package your code in a Docker container
+4.  Upload your Docker image to AWS Elastic Container Registry (ECR)
+5.  Create your AWS Lambda to run the ECR image
+6.  Run/test/configure your AWS Lambda
+7.  Deliver your results to others who may need the results
+
+
