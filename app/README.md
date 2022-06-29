@@ -11,3 +11,8 @@ Contains the model files `lightgbm-classifier.joblib` and `tfidf_vectorizer.jobl
 ## preprocessing
 
 Contains the natural language processing functions
+
+
+# Machine Learning Pipeline
+
+![Machine Learning Pipeline](../images/diagram1.png)
