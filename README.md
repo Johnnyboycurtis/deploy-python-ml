@@ -41,3 +41,4 @@ General steps to deploy your code include
 7.  Deliver your results to others who may need the results
 
 
+![Deployment Process](images/diagram2.png)
