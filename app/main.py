@@ -7,6 +7,7 @@ s3 = boto3.client('s3')
 import os
 import io
 from app.model import MLPipeline
+import datetime
 
 
 running_locally = os.getenv('RUNNING_LOCAL') is not None
@@ -46,10 +47,11 @@ def load_s3_data(filename, bucket=None):
 
 
 def save_s3_results(df, bucket=None, key='predictions.csv'):
+    now_dt = str(datetime.datetime.now())
     if running_locally:
         print("-- saving local results --")
         os.makedirs('tmp', exist_ok=True)
-        local_filename = f'tmp/{key}'
+        local_filename = f'tmp/{key}_{now_dt}'
         print('Local file: ', local_filename)
         df.to_csv(local_filename, index=False)
     else:
