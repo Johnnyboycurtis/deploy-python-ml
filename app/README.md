@@ -4,6 +4,8 @@
 
 Contains the handler for model
 
+![app structure](../images/diagram4.png)
+
 ## model
 
 Contains the model files `lightgbm-classifier.joblib` and `tfidf_vectorizer.joblib`. Also, contains the machine learning pipeline of receiving incomming new data, transforming it and making new predictions.
