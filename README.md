@@ -6,13 +6,21 @@ Basic machine learning (ML) project to illustrate steps to deploying to AWS Lamb
 This repo is part of the YouTube video [How to Deploy a Python Machine Learning App using Docker + AWS Lambda](https://www.youtube.com/watch?v=x4-HR2sAzng)
 
 
+![Youtube logo](images/diagram5.png)
+
+
+
 ## Data Science Process
 
 Some super basic data science/machine learning project. I basically went on Kaggle, looked up "nlp dataset" and downloaded the first one with sufficient data. Then I copied and pasted old code on here.
 
 ## How do I build the model?
 
-`python build_model.py`
+Make sure you have [conda](https://docs.conda.io/en/latest/miniconda.html) installed. Then, install the requirements with `bash install_requirements.sh`.
+
+
+Finally, you can build the model by running `python build_model.py` on the terminal.
+
 
 ## How do I test the app?
 
